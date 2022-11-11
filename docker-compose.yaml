@@ -1,0 +1,6 @@
+version: '2'
+services:
+  s3Mounter:
+    build: .
+    environment:
+      MOUNT_JSON: '[{"bucket-one": "/mnt/1"}, {"bucket-two": "/mnt/2"}]'

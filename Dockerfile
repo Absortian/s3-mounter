@@ -1,10 +1,9 @@
 FROM alpine:3.3
 
-ENV MNT_POINT /var/s3fs
+ENV S3FS_VERSION=v1.86
 
-ARG S3FS_VERSION=v1.86
-
-RUN apk --update --no-cache add fuse alpine-sdk automake autoconf libxml2-dev fuse-dev curl-dev git bash; \
+RUN apk --update --no-cache add fuse alpine-sdk automake autoconf libxml2-dev fuse-dev curl-dev git bash python py-pip; \
+    pip install --upgrade pip; \
     git clone https://github.com/s3fs-fuse/s3fs-fuse.git; \
     cd s3fs-fuse; \
     git checkout tags/${S3FS_VERSION}; \
@@ -16,7 +15,5 @@ RUN apk --update --no-cache add fuse alpine-sdk automake autoconf libxml2-dev fu
     rm -rf /var/cache/apk/*; \
     apk del git automake autoconf;
 
-RUN mkdir -p "$MNT_POINT"
-
-COPY run.sh run.sh
-CMD ./run.sh
+COPY run.py /run.py
+CMD ./run.py
