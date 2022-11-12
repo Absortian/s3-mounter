@@ -1,0 +1,11 @@
+version: '2'
+services:
+  s3-mounter:
+    build: .
+    privileged: true
+    environment:
+      MOUNT_JSON: '[{"bucket-one": "/mnt/1"}, {"bucket-two": "/mnt/2"}]'
+      S3_KEY: 'exampleKey'
+      S3_SECRET: 'exampleSecret'
+      S3_URL: 'https://s3.test.example'
+      S3_USE_PATH_REQUEST_STYLE: 'true'
