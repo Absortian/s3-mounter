@@ -9,7 +9,7 @@ import validators
 try:
     mountJson = os.environ['MOUNT_JSON']
     mountJson = json.loads(mountJson)
-except ValueError:
+except:
     print('Invalid MOUNT_JSON env. Use the format: [{"bucket-one": "/mnt/1"}, {"bucket-two": "/mnt/2"}]')
     sys.exit(1)  
 try:
