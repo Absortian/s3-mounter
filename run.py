@@ -6,8 +6,8 @@ import validators
 # Imports END
 
 # ENV Variables
-mountJson = os.environ['MOUNT_JSON']
 try:
+    mountJson = os.environ['MOUNT_JSON']
     mountJson = json.loads(mountJson)
 except ValueError:
     print('Invalid MOUNT_JSON env. Use the format: [{"bucket-one": "/mnt/1"}, {"bucket-two": "/mnt/2"}]')
