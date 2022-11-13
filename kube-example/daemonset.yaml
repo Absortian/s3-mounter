@@ -22,8 +22,9 @@ spec:
         # Fuse necessary for mounting
         - name: devfuse
           mountPath: /dev/fuse
+        # Mounting points for buckets
         - name: bucket-one
-          mountPath: /var/s3fs:shared
+          mountPath: /mnt/bucket-one:shared
       volumes:
       # Fuse necessary for mounting
       - name: devfuse

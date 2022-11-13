@@ -10,8 +10,8 @@ spec:
       privileged: true
     volumeMounts:
     - name: mntdatas3fs
-      mountPath: /var/s3fs:shared
+      mountPath: /mnt/bucket-one:shared
   volumes:
   - name: mntdatas3fs
     hostPath:
-      path: /mnt/s3data/data
+      path: /mnt/bucket-one
