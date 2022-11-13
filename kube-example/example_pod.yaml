@@ -9,9 +9,9 @@ spec:
     securityContext:
       privileged: true
     volumeMounts:
-    - name: mntdatas3fs
+    - name: bucket-one
       mountPath: /mnt/bucket-one:shared
   volumes:
-  - name: mntdatas3fs
+  - name: bucket-one
     hostPath:
       path: /mnt/bucket-one
