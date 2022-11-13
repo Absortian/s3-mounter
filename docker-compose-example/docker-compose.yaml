@@ -1,7 +1,7 @@
 version: '2'
 services:
   s3-mounter:
-    image: dockerhub.io/absortian/s3-mounter:1.0.0
+    image: absortian/s3-mounter:1.0.0
     privileged: true
     environment:
       MOUNT_JSON: '[{"bucket-one": "/mnt/1"}, {"bucket-two": "/mnt/2"}]'
