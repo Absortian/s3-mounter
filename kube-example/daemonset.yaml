@@ -1,10 +1,13 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
     app: s3-provider
   name: s3-provider
 spec:
+  selector:
+    matchLabels:
+      app: s3-provider
   template:
     metadata:
       labels:
@@ -24,7 +27,8 @@ spec:
           mountPath: /dev/fuse
         # Mounting points for buckets
         - name: bucket-one
-          mountPath: /mnt/bucket-one:shared
+          mountPath: /mnt/bucket-one
+          mountPropagation: Bidirectional
       volumes:
       # Fuse necessary for mounting
       - name: devfuse
