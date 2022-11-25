@@ -60,6 +60,8 @@ for eachMount in mountJson:
     if not os.path.exists(mountPath):
         os.makedirs(mountPath)
         print('Created mount path: {}'.format(mountPath))
+    # Create string for umount
+    umountString = 'umount ' + mountPath
     # Create string for s3fs command
     s3fsCommand = 's3fs {} {} -o passwd_file=.secretFile'.format(bucket, mountPath)
     if s3Url and isinstance(s3Url, str):
@@ -68,6 +70,7 @@ for eachMount in mountJson:
         s3fsCommand += ' -o use_path_request_style'
     print('Running s3fs command: {}'.format(s3fsCommand))
     # Check if s3fs command is successful
+    os.system(umountString)
     os.system(s3fsCommand)
     if os.path.ismount(mountPath):
         print('Successfully mounted {} to {}'.format(bucket, mountPath))
